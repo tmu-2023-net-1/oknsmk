@@ -1,0 +1,637 @@
+@import url('https://fonts.googleapis.com/css2?family=Sawarabi+Mincho&display=swap');
+body {
+    background-color: #2d2d2df7;
+    color:#fff;
+    font-family: 'Sawarabi Mincho', serif; /*日本語*/
+}
+
+#page_top{
+    width: 90px;
+    height: 90px;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    opacity: 0.6;
+  }
+  #page_top a{
+    position: relative;
+    display: block;
+    width: 90px;
+    height: 90px;
+    text-decoration: none;
+  }
+  #page_top a::before{
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    content: '\f102';
+    font-size: 25px;
+    color: rgb(194, 242, 238);
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    top: -40px;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+    text-align: center;
+  }
+  #page_top a::after{
+    content: 'PAGE TOP';
+    font-size: 13px;
+    color: #fff;
+    position: absolute;
+    top: 45px;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+    text-align: center;
+    color:rgb(194, 242, 238);
+  }
+
+.main-title {
+    height: 70vh; /* コンテナの高さ */
+    width: 100%; /* コンテナの横幅 */
+    display: flex; /* Flexboxを使用する */
+    justify-content: center; /* 縦方向に中央配置 */
+    align-items: center; /* 横方向に中央配置 */
+    font-size: 200%;
+}
+
+
+.about-container {
+    text-align: center;
+  }
+
+  .about {
+    display: inline-block;
+    cursor: pointer;
+    transition: color 0.3s; /* ホバー時の色変化のトランジション効果を追加 */
+    transition: font-size 0.3s;
+    height: 20vh; /* コンテナの高さ */
+    width: 100%; /* コンテナの横幅 */
+    /*display: flex;  Flexboxを使用する */
+    justify-content: center; /* 縦方向に中央配置 */
+    align-items: center; /* 横方向に中央配置 */
+    font-size: 30px;
+  }
+
+  .about:hover {
+    color: rgb(176, 220, 216); /* ホバー時の色を指定 */
+    font-size: 40px;
+  }
+
+  .additional-text {
+    height: 20vh;
+    display: none;
+    justify-content: center; /* 縦方向に中央配置 */
+    align-items: center; /* 横方向に中央配置 */
+    animation: fade-in 5s forwards; /* 5秒かけてフェードインするアニメーションを指定 */
+  }
+
+  @keyframes fade-in {  /*フェードインのアニメーション*/
+    0% {
+      opacity: 0; /* 初期状態は透明 */
+    }
+    100% {
+      opacity: 1; /* 最終状態は完全に表示 */
+    }
+  }
+
+.gendaigoyaku{
+    height: 30vh;
+    width: 100%; /* コンテナの横幅 */
+    display: flex; /* Flexboxを使用する */
+    justify-content: center; /* 縦方向に中央配置 */
+    align-items: center; /* 横方向に中央配置 */
+    text-align: center;
+    margin-bottom: 20vh;
+}
+
+
+/* 桜を表示するコンテナのスタイル */
+.cherry-blossom-container {
+    position: relative;
+    height: 100vh; /* コンテナの高さ */
+    width: 100%; /* コンテナの横幅 */
+    overflow: hidden; /* コンテナからはみ出した要素を隠す */
+    z-index: 1; /* 親要素の重なり順を設定 */
+  }
+  
+  /* 桜の花びらのスタイル */
+  .petal {
+    position: absolute;
+    background-color: #ffc0cb; /* 花びらの色 */
+    border-radius: 150% 0 150% 0;
+    animation: animate-petal 10s linear;
+  }
+  
+  .petal::after {
+    content: "";
+    position: absolute;
+    top: -14%;
+    left: -10%;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: #ffc0cb;
+    border-radius: 150% 0 150% 0;
+    transform: rotate(15deg);
+  }
+  
+  /* 花びらが降るアニメーション */
+  @keyframes animate-petal {
+    0% {
+      top: 0;
+      opacity: 0;
+      transform: rotate(0deg);
+    }
+    10% {
+      opacity: 1;
+    }
+    90% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+      top: 100vh;
+      transform: rotate(3000deg);
+    }
+  }
+
+  /*泡の場所指定*/
+  .bubble-background {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    z-index: 1; /* 親要素の重なり順を設定 */
+  }
+  /* 泡の見た目 */
+.bubble {
+    position: absolute;
+    bottom: -50px;
+    background-color: transparent;
+    border-radius: 50%;
+    pointer-events: none;
+    box-shadow: inset 0 0 10px rgba(255,255,255,0.2);
+    animation: bubble 8s linear infinite;
+  }
+  
+  /* 泡の一番明るい部分を疑似要素で表現 */
+  .bubble::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform: scale(0.25) translate(-70%, -70%);
+    background: radial-gradient(rgba(255,255,255, 0.5), transparent);
+    border-radius: 50%;
+  }
+  
+  /* 泡が上に浮かび上がっていくアニメーション */
+  @keyframes bubble {
+    0% {
+      transform: translatY(0);
+      opacity: 1;
+    }
+    99% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-100vh);
+      opacity: 0;
+    }
+  }
+
+
+/* ===== 落ち葉を表示するコンテナのスタイル ===== */
+.leaves-container {
+    position: relative;
+    height: 100vh; /* コンテナの高さ */
+    width: 100%; /* コンテナの横幅 */
+    overflow: hidden; /* コンテナからはみ出した要素を隠す */
+    z-index: 1; /* 親要素の重なり順を設定 */
+  }
+  
+  /* ===== 落ち葉のスタイル ===== */
+  
+  /* 落ち葉の共通スタイル */
+  .leaf {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    position: absolute;
+    animation: animate-leaf 8s linear;
+  }
+  
+  /* 落ち葉1 */
+  .leaf-1 {
+    background-image: url('img/leaf-1.svg'); /* 任意のパスを記入 */
+  }
+  
+  /* 落ち葉2 */
+  .leaf-2 {
+    background-image: url('img/leaf-2.svg'); /* 任意のパスを記入 */
+  }
+  
+  /* 落ち葉3 */
+  .leaf-3 {
+    background-image: url('img/leaf-3.svg'); /* 任意のパスを記入 */
+  }
+  
+  /* ===== 落ち葉が降るアニメーション ===== */
+  @keyframes animate-leaf {
+    0% {
+      opacity: 0;
+      top: 0;
+      transform: rotate(0);
+    }
+  
+    10% {
+      opacity: 1;
+    }
+  
+    90% {
+      opacity: 1;
+    }
+  
+    100% {
+      opacity: 0;
+      top: 100vh;
+      transform: rotate(1080deg);
+    }
+  }
+
+/* ===== 雪を表示するコンテナのスタイル ===== */
+.snow-container {
+    position: relative;
+    height: 100vh; /* コンテナの高さ */
+    width: 100%; /* コンテナの横幅 */
+    overflow: hidden;
+  }
+  
+  /* ===== 雪のスタイル ===== */
+  .snow {
+    background-color: #fff; /* 雪の色 */
+    border-radius: 50%;
+    position: absolute;
+    animation: animate-snow 10s linear;
+  }
+  
+  /* ===== 雪のアニメーション ===== */
+  @keyframes animate-snow {
+    0% {
+      opacity: 0;
+      top: 0;
+    }
+  
+    10% {
+      opacity: 1;
+    }
+  
+    90% {
+      opacity: 1;
+    }
+  
+    100% {
+      opacity: 0;
+      top: 100vh;
+    }
+  }
+
+  .kami-left{
+    width:70%;
+    height:100%;
+    float:left;
+    z-index: 2;
+  }
+  .kaminoku1 { /*いにしへの*/
+    width: 70%;
+    height:60%;
+    display: flex;
+    justify-content: flex-end; /* 要素を水平方向に右寄せにする */
+    align-items: center; /* 要素を垂直方向に中央揃えにする */
+    text-align: right;
+    overflow: hidden;
+    font-size: 10vh;
+  }
+
+  .kaminoku1 span{ 
+    opacity: 0;
+animation: letter-glow 0.7s 0s ease both;
+  }
+
+ 
+  .kaminoku1 span:nth-child(1) {
+    animation-delay: 0.5s;
+  }
+
+  .kaminoku1 span:nth-child(2) {
+    animation-delay: 0.7s;
+  }
+
+.kaminoku1 span:nth-child(3) {
+    animation-delay: 1.5s;
+  }
+
+  .kaminoku1 strong{
+    font-size: 15vh;
+    opacity: 0;
+    filter: blur(10px);
+    animation: letter-glow 0.7s 0s ease both, blur 2s 0s ease both;
+    font-size: 200%;
+    animation-delay: 1.0s;
+}
+
+.is-act .kaminoku1 span{
+    opacity: 0;
+    animation: letter-glow 0.7s 0s ease both;
+  }
+
+  .is-act .kaminoku1 span:nth-child(1) {
+    animation-delay: 0.5s;
+  }
+  .is-act .kaminoku1 span:nth-child(2) {
+    animation-delay: 0.7s;
+  }
+
+  .is-act .kaminoku1 strong{
+    opacity: 0;
+    filter: blur(10px);
+    animation: letter-glow 0.7s 0s ease both, letter-blur 2s 0s ease both;
+    font-size: 200%;
+    animation-delay: 1.0s;
+  }
+
+  .is-act .kaminoku1 span:nth-child(3) {
+    animation-delay: 1.5s;
+  }
+
+  @keyframes letter-glow{
+    0%   {
+      opacity: 0;
+      text-shadow: 0px 0px 1px rgba(255,255,255,0.1);
+    }
+    66%  {
+      opacity: 1;
+      text-shadow: 0px 0px 20px rgba(255,255,255,0.9);
+    }
+    77%   { opacity: 1;  }
+    100% {
+      opacity:0.7;
+      text-shadow: 0px 0px 20px rgba(255,255,255,0.0);
+    }
+    }
+    @keyframes blur {
+    0% {
+      opacity: 0;
+      filter: blur(10px);
+    }
+    100% {
+      opacity: 1;
+      filter: blur(0);
+    }
+    }
+
+.kaminoku2 { /*奈良の都の*/
+    width: 100%;
+    height:30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    font-size: 10vh;
+}
+
+.kaminoku2 span{ 
+    opacity: 0;
+animation: letter-glow 0.7s 0s ease both;
+  }
+
+ 
+  .kaminoku2 span:nth-child(1) {
+    animation-delay: 1.5s;
+  }
+
+  .kaminoku2 span:nth-child(2) {
+    animation-delay: 1.7s;
+  }
+
+  .kaminoku2 span:nth-child(3) {
+    animation-delay: 2.3s;
+  }
+
+  .kaminoku2 strong{
+    font-size: 15vh;
+    opacity: 0;
+    filter: blur(10px);
+    animation: letter-glow 0.7s 0s ease both, blur 2s 0s ease both;
+    font-size: 20vh;
+    animation-delay: 2.0s;
+}
+
+.is-act .kaminoku2 span{
+    opacity: 0;
+    animation: letter-glow 0.7s 0s ease both;
+  }
+
+  .is-act .kaminoku2 span:nth-child(1) {
+    animation-delay: 1.5s;
+  }
+  .is-act .kaminoku2 span:nth-child(2) {
+    animation-delay: 1.7s;
+  }
+
+  .is-act .kaminoku2 strong{
+    opacity: 0;
+    filter: blur(10px);
+    animation: letter-glow 0.7s 0s ease both, letter-blur 2s 0s ease both;
+    font-size: 200%;
+    animation-delay: 2.0s;
+  }
+
+
+.kaminoku3{
+    width: 25%;
+    height:100%;
+    float:left;
+    margin:0;
+    overflow: hidden;
+    -ms-writing-mode: tb-rl; /*ここから*/
+	writing-mode: vertical-rl;
+    text-orientation: upright; /*ここまでで縦書き*/
+    white-space: nowrap;
+  font-size:20vh;
+  animation: waveMotion 5s linear infinite;
+  /*margin: 0 auto;*/
+  z-index: 2;
+}
+
+.kaminoku3 span{ 
+    opacity: 0;
+animation: letter-glow 0.7s 0s ease both;
+  }
+
+ 
+  .kaminoku3 span:nth-child(1) {
+    animation-delay: 2.5s;
+  }
+
+  .kaminoku3 strong{
+    font-size: 15vh;
+    opacity: 0;
+    filter: blur(10px);
+    animation: letter-glow 0.7s 0s ease both, blur 2s 0s ease both;
+    font-size: 20vh;
+    animation-delay: 3.0s;
+    font-size: 23vh;
+}
+
+.is-act .kaminoku3 span{
+    opacity: 0;
+    animation: letter-glow 0.7s 0s ease both;
+  }
+
+  .is-act .kaminoku3 span:nth-child(1) {
+    animation-delay: 2.5s;
+  }
+
+  .is-act .kaminoku3 strong{
+    opacity: 0;
+    filter: blur(10px);
+    animation: letter-glow 0.7s 0s ease both, letter-blur 2s 0s ease both;
+    font-size: 200%;
+    animation-delay: 3.0s;
+  }
+
+.kuuhaku{
+    width:5%;
+    height:100%;
+    float:left;
+}
+
+/* ここからワープ */
+
+.warp-kuuhaku{
+    width:100%;
+    height:20%;
+    
+}
+
+.warp__placeholder {
+    position: absolute;
+    color: transparent;
+    font-size: .1px;
+    z-index: 3;
+    opacity: 0;
+    font-size: 20vh;
+    animation: letter-fade-in 0.7s 5s ease both;
+  }
+  
+  .warp {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    font: normal 31px/1 'Sawarabi Mincho';
+  }
+  
+  @keyframes letter-fade-in {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+[class*='warp__'] {
+    display: block;
+    position: absolute;
+}
+
+.warp__0 {
+    transform-origin: 50% 27px;
+    transform: translate(372.1115px,227.5691px) rotate(-0.755406rad);
+}
+
+.warp__1 {
+    transform-origin: 50% 27px;
+    transform: translate(406.5567px,201.1754px) rotate(-0.541066rad);
+}
+
+.warp__2 {
+    transform-origin: 50% 27px;
+    transform: translate(445.8339px,183.9014px) rotate(-0.283646rad);
+}
+
+.warp__3 {
+    transform-origin: 50% 27px;
+    transform: translate(488.3294px,177.3402px) rotate(-0.027054rad);
+}
+
+.warp__4 {
+    transform-origin: 50% 27px;
+    transform: translate(531.8767px,181.1228px) rotate(0.191513rad);
+}
+
+.warp__5 {
+    transform-origin: 50% 27px;
+    transform: translate(573.8138px,193.115px) rotate(0.357406rad);
+}
+
+.warp__6 {
+    transform-origin: 50% 27px;
+    transform: translate(614.2415px,211.3175px) rotate(0.482522rad);
+}
+
+.warp__7 {
+    transform-origin: 50% 27px;
+    transform: translate(653.6909px,232.42579999999998px) rotate(0.469283rad);
+}
+
+.warp__8 {
+    transform-origin: 50% 27px;
+    transform: translate(693.1345px,250.6089px) rotate(0.385826rad);
+}
+
+.warp__9 {
+    transform-origin: 50% 27px;
+    transform: translate(734.3915px,263.8506px) rotate(0.21169rad);
+}
+
+.warp__10 {
+    transform-origin: 50% 27px;
+    transform: translate(777.189px,265.7261px) rotate(-0.158184rad);
+}
+
+.warp__11 {
+    transform-origin: 50% 27px;
+    transform: translate(818.3266px,252.5824px) rotate(-0.367043rad);
+}
+
+.warp__12 {
+    transform-origin: 50% 27px;
+    transform: translate(859.7749px,241.0618px) rotate(-0.146771rad);
+}
+
+.warp__13 {
+    transform-origin: 50% 27px;
+    transform: translate(900.7749px,231.0618px) rotate(0.246771rad);
+}
+  
+  .footer {
+    height: 20px;
+    text-align: center;
+    padding: 2rem;
+    font-size: 15px;
+    color: #999;
+    background: #2d2d2df7;
+    border-top: 1px solid #e5e7eb;
+  }
+  
+  .footer:hover {
+    color: #000;
+  }
+  
